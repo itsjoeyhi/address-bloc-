@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 
+
 module.exports = class MenuControllers {
   constructor(){
     this.mainMenuQuestions = [
@@ -9,7 +10,9 @@ module.exports = class MenuControllers {
           message: "Please choose from an option below: ",
           choices: [
             "Add new contact",
+            "Get todays date",
             "Exit"
+            
           ]
         }
       ];
@@ -22,6 +25,9 @@ main() {
       switch(response.mainMenuChoice){
         case "Add new contact":
           this.addContact();
+          break;
+          case "Get todays date":
+          this.getDate();
           break;
         case "Exit":
           this.exit();
@@ -48,4 +54,12 @@ addContact(){
     console.log("Thanks for using AddressBloc!");
     process.exit();
   }
+
+getDate() {
+    var dt = new Date();
+    var utcDate = dt.toTimeString();
+    console.log(utcDate)
+    this.main()
+}
+
 }
